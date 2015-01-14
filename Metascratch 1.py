@@ -6,20 +6,20 @@ import random
 #width = int(input('Enter width: '))
 #title = input('Enter title: ')
 sample_list = random.sample(range(10), 4)
-print(sample_list)
+sample_strings = ['Welcome to the game.', 'These are the rules:\n1. Make moves\n2. Make money\n3. Win big', 'Hope you have a good time!', 'You lost.', 'Please play again.\nIt really was a pleasure.']
 
-def print_in_box(width, title): #Make parameters 'width' and 'title' when removing user input
-    #Make sure the longest element of 'title' can fit
-    #Make it clearer that 'title' can be a list of strings
-
+def print_in_box(width, title): 
     #Check that the length of the longest element of 'title' is less than width
-    if len(title) > width:
+    lengths = []
+    for i in title:
+        for row in i.split('\n'):
+            lengths.append(int(len(row)))
+    if max(lengths) > width:
         print('ERROR: Title cannot fit in box of that width.')
     else:
         for i in title: #Find more descriptive name than 'i'
             for row in i.split('\n'):
                 num_spaces = int((width - len(row))/2)  
-                
                 if row == i:
                     print('+' + '-' * width + '+')
                     if len(i) % 2 == 1:
@@ -29,6 +29,7 @@ def print_in_box(width, title): #Make parameters 'width' and 'title' when removi
                     print('+' + '-' * width + '+')
                 else:
                     print('|' + ' ' * num_spaces + row + ' ' * (num_spaces) + '|') 
+        print('+' + '-' * width + '+')
                 #print('+' + '-' * width + '+') #Could be a useful method, draws single lines between rows and double lines between elements
 
 
@@ -44,4 +45,5 @@ def print_list(content): #Change name, no longer prints list
         output.append(' '*(len(str(max_index)) - len(str(index))) + str(index) + '. ' + ' '*(len(str(max_value)) - len(str(i))) + str(i))
     return output
 
-print_in_box(80, ['Welcome to the game.', 'These are the rules:\n1. No bullying\n2. No being shit'])
+print_in_box(80, sample_strings)
+print_list(sample_list)
