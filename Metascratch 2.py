@@ -1,18 +1,53 @@
-sample_text = ['Welcome to [Game]', ['Line 1', 'Line 2', 'Line 3'], 'Thanks for playing.']
+import random
+import math
 
-def print_in_box(width, title, alignment):
-    """
-    Output should have each element of the title into each box. Therefore, elements in title that are lists themselves (or [String].split([delim])) should be in the same box.
-    """
-    if alignment in ('C', 'L'):
-        print('Alignment: ' + alignment)
-        if alignment == 'C':
-            pass #Work here.
-        elif alignment == 'L':
-            pass
-        else:
-            pass
-    else:
-        print('Alignment unknown.')
+title = 'Subtract Squares'
+width = 100
+max_target = int(input('Enter a maximum target:\n')) 
+user_input = None
+game_state = random.randint(0, max_target)
+options = []
+player = 0
 
-print_in_box(80, sample_text, 'C')
+def print_bar(length):
+    """
+    int -> None
+    Prints a length of hyphens ('-') to separate vertical elements.
+    """
+    print(('-' * length) if type(length) is int else ('-' * 10))
+def get_options(game_state):
+    """
+    int -> list
+    Given a game state, find the list of possible moves.
+    """
+    output = []
+    for i in range(1, math.ceil(math.sqrt(max_target))):
+            if i**2 <= game_state:
+                output.append(i)
+            else:
+                break
+    return output
+
+def get_input(message = 'Please enter your choice below.\n'):
+    """
+    None -> int
+    Returns the user's choice (of index) from the 'options' list of possible moves.
+    """
+    choice = input(message)
+    try:
+        return int(choice)
+    except ValueError:
+        return get_input('Sorry, I didn\'t understand that input. Please enter an integer below.\n') 
+
+print('Welcome to {}.'.format(title))
+options.append(get_options(game_state))
+while game_state > 0:
+    print('Player {}\'s turn.'.format((player % 2) + 1))
+    print('The target is {}.'.format(game_state))
+    print('The options are:')
+    options = get_options(game_state)
+    for i in options:
+        print(str(i))
+    game_state -= get_input()
+    player += 1
+print('Game over. Player {} wins.'.format((player % 2) + 1))
