@@ -1,7 +1,10 @@
+from random import randint
+
 class StrategyList:
-    def basic_strategy(game_state):
+    def basic_strategy(game):
+        """Takes a game object and produces a random choice from the options."""
         
-        move = f(game_state)
-        #move is SOME function of the given game state        
+        options = game.options
+        choice = randint(1, len(options))     
         
-        return move
+        return choice
