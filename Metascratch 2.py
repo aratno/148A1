@@ -3,10 +3,10 @@ import math
 
 title = 'Subtract Squares'
 width = 100
-max_target = int(input('Enter a maximum target:\n')) 
+max_target = 100 
 user_input = None
 game_state = random.randint(0, max_target)
-options = []
+options = [] 
 player = 0
 
 def print_bar(length):
@@ -15,6 +15,7 @@ def print_bar(length):
     Prints a length of hyphens ('-') to separate vertical elements.
     """
     print(('-' * length) if type(length) is int else ('-' * 10))
+
 def get_options(game_state):
     """
     int -> list
@@ -42,12 +43,13 @@ def get_input(message = 'Please enter your choice below.\n'):
 print('Welcome to {}.'.format(title))
 options.append(get_options(game_state))
 while game_state > 0:
-    print('Player {}\'s turn.'.format((player % 2) + 1))
+    print('\nPlayer {}\'s turn.'.format((player % 2) + 1))
     print('The target is {}.'.format(game_state))
     print('The options are:')
+    print('bugtest: ' + str(options))
     options = get_options(game_state)
     for i in options:
-        print(str(i))
-    game_state -= get_input()
+        print('{}. {}'.format(i, options[i]))
+    game_state -= options[get_input()]
     player += 1
 print('Game over. Player {} wins.'.format((player % 2) + 1))
