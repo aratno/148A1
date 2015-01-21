@@ -12,20 +12,18 @@ class Game:
     def change_state(self, move):
         """Given the move, this function produces a new state."""
         
+        self.generic_change_state()
+        #calls the generic change state function
+        
         new_state = f(move)
         new_options = g(move)
         #the new state and new set of options will be SOME function of the move made
         
-        turns += 1
-        next_to_move = turns%2       
-        
         self.state = new_state
         self.options = new_options
+    
+    def generic_change_state(self):
+        """A generic game state change that applies to all games."""
         
-    def get_options(self):
-        """Given the game state, this function produces the options for the next player in a readable form."""
-        
-        options_display = h(self.options)
-        #this will be a function that takes the list or dictionary of options and produces a readable/printable list
-        
-        return options_display
+        self.turns += 1
+        self.next_to_move = self.turns%2         
