@@ -1,29 +1,29 @@
 class Game:
-    """A generic class for game objects."""
+    """A generic class for game state objects."""
     
-    def __init__(self, how_to_play, initial_state, initial_moves, winner):
-        self.how_to_play = how_to_play
-        self.state = initial_state
-        self.options = initial_moves
+    def __init__(self, players):
+        """ (Game, str, int) -> NoneType
+        
+        
+        Initialize a game state object.
+        """
+        
+        self.players = players
         self.next_to_move = 0
-        self.turns = 0
         self.winner = None
         
-    def change_state(self, move):
-        """Given the move, this function produces a new state."""
+    def __eq__(self, other):
+        """(Game, Game) -> Bool
         
-        self.generic_change_state()
-        #calls the generic change state function
+        Determine whether two game states are equal.
+        """
         
-        new_state = f(move)
-        new_options = g(move)
-        #the new state and new set of options will be SOME function of the move made
-        
-        self.state = new_state
-        self.options = new_options
+        raise NotImplementedError('Need a specific game to determine equality.')
     
-    def generic_change_state(self):
-        """A generic game state change that applies to all games."""
+    def __str__(self):
+        """ (Game) -> str
         
-        self.turns += 1
-        self.next_to_move = self.turns%2         
+        Return a string representation of the game state.
+        """
+        
+        raise NotImplementedError('Need a specific game to return string.')
