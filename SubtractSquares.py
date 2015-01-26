@@ -19,12 +19,10 @@ class SubtractSquares(Game):
         Game.__init__(self, players)
         self.state = max_choice
 
-        options = []
         for i in range(1, math.ceil(math.sqrt(self.state))):
-            options.append(i**2)
-        self.options = options
-        #produce the list of options
-        
+            self.options.append(i**2)
+            
+            
     def __eq__(self, other):
         """ (SubtractSquares, SubtractSquares) -> Bool
         
@@ -52,6 +50,18 @@ class SubtractSquares(Game):
         """
         
         return '{}: {}'.format(self.state, self.players[0])
+    
+    def __repr__(self):
+        """ (SubtractSquares) -> str
+        
+        Represent the game state.
+        
+        >>> a = SubtractSquares(78, ['Kasra', 'Soheil'])
+        >>> a
+        SubtractSquares: max number = 78, next to move is Kasra.
+        """
+        
+        return 'SubtractSquares: max number = {}, next to move is {}.'.format(self.state, self.players[0])
 
 
 if __name__ == '__main__':

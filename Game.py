@@ -11,6 +11,7 @@ class Game:
         self.players = players
         self.next_to_move = 0
         self.winner = None
+        self.options = []
         
     def __eq__(self, other):
         """(Game, Game) -> Bool
@@ -27,3 +28,11 @@ class Game:
         """
         
         raise NotImplementedError('Need a specific game to return string.')
+    
+    def __repr__(self):
+        """ (Game) -> str
+        
+        Represent the game state.
+        """
+        
+        raise NotImplementedError('Need a specific game to represent.')
