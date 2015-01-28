@@ -52,10 +52,10 @@ class SubtractSquares(Game):
         
         >>> a = SubtractSquares(78, ['Kasra', 'Soheil'])
         >>> print(str(a))
-        78: Kasra
+        Subtract Square 78, Kasra
         """
         
-        return '{}: {}'.format(self.state, self.players[0])
+        return 'Subtract Square {}, {}'.format(self.state, self.players[0])
     
     def __repr__(self):
         """ (SubtractSquares) -> str
