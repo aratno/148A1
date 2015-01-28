@@ -78,6 +78,7 @@ def print_options(game):
      9.  81
     10. 100
     """
+    #Make alignment RIGHT
     output = ''
     for i in range(len(game.options)):
         output += (' '*(len(str(len(game.options))) - len(str(i))) + str(i + 1) + '. ' + ' '*(len(str(max(game.options))) - len(str(game.options[i]))) + str(game.options[i]) + '\n' )
