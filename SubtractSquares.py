@@ -16,7 +16,7 @@ class SubtractSquares(Game):
         Initialize a subtract squares game state.
         """
         
-        Game.__init__(self, players)
+        Game.__init__(self, players, 'Subtract Squares')
         self.state = max_choice
 
         for i in range(1, math.ceil(math.sqrt(self.state))):
