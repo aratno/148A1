@@ -10,7 +10,7 @@ class SubtractSquares(Game):
     1. A positive whole number is picked randomly by the computer (we will call this the target).
     2. A player picks a perfect square to subtract from the target, and the difference becomes the new target.
     3. The next player picks a perfect square to subtract from the target, again producing a new target.
-    4. Players alternate turns until there are no longer any perfect squares that can be subtracted from the target. Whoever is to play next when this happens loses.
+    4. Players alternate turns until there are no longer any perfect squares that can be subtracted from the target. Whomever is to play next when this happens loses.
     
     """
     
@@ -20,7 +20,9 @@ class SubtractSquares(Game):
         Initialize a subtract squares game state.
         """
         
-        Game.__init__(self, players, 'Subtract Squares')
+        instructions = 'Subtract Squares is a two-player game. Below are the instructions:\n1. A positive whole number is picked randomly by the computer (we will call this the target).\n2. A player picks a perfect square to subtract from the target, and the difference becomes the new target.\n3. The next player picks a perfect square to subtract from the target, again producing a new target.\n4. Players alternate turns until there are no longer any perfect squares that can be subtracted from the target. Whomever is to play next when this happens loses.'
+        
+        Game.__init__(self, players, 'Subtract Squares', instructions)
         self.state = max_choice
 
         for i in range(1, math.ceil(math.sqrt(self.state))):

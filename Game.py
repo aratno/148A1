@@ -1,7 +1,7 @@
 class Game:
     """A generic class for game state objects."""
     
-    def __init__(self, players, title):
+    def __init__(self, players, title, instru):
         """ (Game, str, int) -> NoneType
         
         
@@ -13,6 +13,7 @@ class Game:
         self.winner = None
         self.options = []
         self.title = title
+        self.instructions = instru
         
     def __eq__(self, other):
         """(Game, Game) -> Bool
