@@ -27,6 +27,8 @@ class SubtractSquares(Game):
 
         for i in range(1, math.ceil(math.sqrt(self.state))):
             self.options.append(i**2)
+        if math.ceil(math.sqrt(self.state)) == math.sqrt(self.state):
+            self.options.append(self.state)
             
             
     def __eq__(self, other):
