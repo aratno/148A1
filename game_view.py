@@ -1,24 +1,22 @@
 import math
 import random
+from SubtractSquares import SubtractSquares
 
-game_state = 121
-options = []
-options.extend(range(1, int(math.sqrt(game_state)) + 1))
-title = 'Subtract Squares'
-players = ['Abe', 'Kasra']
+a = SubtractSquares(100, ['Player 1', 'Player 2'])
 
-print('game_state: {}'.format(game_state))
-print('options: {}'.format(options))
+def print_title(self):
+    """
 
-#Create a 'SubtractSquares' object called 'a'
-#a = SubtractSquares(game_state, players)
-#while a.game_state > 0:
-#   a = SubtractSquares(game_state, a.players)
+    """
+    print('+' + '-'*len(self.title) + '+')
+    print('|' + self.title + '|')
+    print('+' + '-'*len(self.title) + '+')
 
-def print_title(title):
-    print('+' + '-'*len(title) + '+')
-    print('|' + title + '|')
-    print('+' + '-'*len(title) + '+')
+def print_turn(self):
+    """
 
-title = 'Subtract Squares'
-print_title('  ' + title + '  ') 
+    """
+    print('~ {}\'s turn ~'.format(self.players[0]))
+
+print_title(a)
+print_turn(a)
