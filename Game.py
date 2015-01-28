@@ -38,3 +38,9 @@ class Game:
         """
         
         raise NotImplementedError('Need a specific game to represent.')
+    
+    def change_state(self, choice):
+        """ (SubtractSquares, int) -> NoneType
+        
+        Take a choice and change the game state to a new one.
+        """

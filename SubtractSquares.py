@@ -66,10 +66,26 @@ class SubtractSquares(Game):
         
         >>> a = SubtractSquares(78, ['Kasra', 'Soheil'])
         >>> a
-        SubtractSquares: max number = 78, next to move is Kasra.
+        SubtractSquares: max number is 78, next to move is Kasra.
         """
         
-        return 'SubtractSquares: max number = {}, next to move is {}.'.format(self.state, self.players[0])
+        return 'SubtractSquares: max number is {}, next to move is {}.'.format(self.state, self.players[0])
+    
+    def change_state(self, choice):
+        """ (SubtractSquares, int) -> NoneType
+        
+        Take a choice and change the game state to a new one.
+        
+        >>> a = SubtractSquares(102, ['Kasra', 'Soheil'])
+        >>> a.change_state(9)
+        >>> a
+        SubtractSquares: max number is 21, next to move is Soheil.
+        """
+        
+        new_state = self.state - self.options[choice - 1] #the extra -1 is there because the list of options will begin at index 1 (as viewed by the user)
+        new_players = self.players.reverse()
+        
+        self = SubtractSquares(new_state, new_players)
 
 
 if __name__ == '__main__':
