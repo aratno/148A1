@@ -1,12 +1,15 @@
 from random import randint
 
 class BasicStrategy(StrategyList):
-    """A class containing a basic strategy that inherits from the generic strategy class."""
+    """A class containing a basic strategy that inherits from the generic strategy class.
     
-    def basic_strategy(game):
+    This class does not have __init__, __str__, __repr__, and __eq__ methods because it simply contains methods that correspond to different strategies.
+    """
+    
+    def default_strategy(game):
         """(Game) -> int
         
         Take a game object and produce a random choice from the options.
         """
 
-        return randint(1, len(game.options))    
+        return randint(1, len(game.options))
