@@ -6,7 +6,11 @@ class SubtractSquares(Game):
     
     Inherits from the generic Game class.
     
-    ****INSTRUCTIONS HERE****
+    Subtract Squares is a two-player game. Below are the instructions:
+    1. A positive whole number is picked randomly by the computer (we will call this the target).
+    2. A player picks a perfect square to subtract from the target, and the difference becomes the new target.
+    3. The next player picks a perfect square to subtract from the target, again producing a new target.
+    4. Players alternate turns until there are no longer any perfect squares that can be subtracted from the target. Whoever is to play next when this happens loses.
     
     """
     
