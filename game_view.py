@@ -1,8 +1,10 @@
 import math
+import time
 import random
 from SubtractSquares import SubtractSquares
+from BasicStrategy import BasicStrategy
 
-a = SubtractSquares(100, ['Player 1', 'Player 2'])
+a = SubtractSquares(100, ['Player', 'CPU'])
 
 def print_title(game):
     """
@@ -108,6 +110,11 @@ print_instructions(a)
 while a.state > 0:
     print_state(a)
     print_turn(a)
-    print_options(a)
-    get_input(a)
-print('Game over.')
+    if a.players[0] == 'Player':
+        print_options(a)
+        get_input(a)
+    else:
+        time.sleep(3)
+        a.change_state(BasicStrategy.default_strategy(a) - 1)
+print('  ___   __   _  _  ____     __   _  _  ____  ____ ' + '\n / __) / _\ ( \/ )(  __)   /  \ / )( \(  __)(  _ \'' + '\n( (_ \/    \/ \/ \ ) _)   (  O )\ \/ / ) _)  )   /' + '\n \___/\_/\_/\_)(_/(____)   \__/  \__/ (____)(__\_)')
+print('{} Wins!'.format(a.players[1]))
