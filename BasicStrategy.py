@@ -1,4 +1,5 @@
 from random import randint
+import StrategyList
 
 class BasicStrategy(StrategyList):
     """A class containing a basic strategy that inherits from the generic strategy class.
