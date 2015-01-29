@@ -4,7 +4,7 @@ sample_text = 'Subtract Squares is a two-player game. Below are the instructions
 
 print('------------------SAMPLE TEXT------------------\n' + sample_text)
 
-width = 110
+width = 20
 
 #split sample text
 split_text = sample_text.split('\n')
