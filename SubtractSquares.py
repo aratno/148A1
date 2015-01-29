@@ -12,7 +12,7 @@ class SubtractSquares(Game):
     3. The next player picks a perfect square to subtract from the target, again producing a new target.
     4. Players alternate turns until there are no longer any perfect squares that can be subtracted from the target. Whomever is to play next when this happens loses.
     
-    """
+    """  
     
     def __init__(self, max_choice, players):
         """ (SubtractSquares, int, list) -> None
@@ -24,11 +24,7 @@ class SubtractSquares(Game):
         
         Game.__init__(self, players, 'Subtract Squares', instructions)
         self.state = max_choice
-
-        for i in range(1, math.ceil(math.sqrt(self.state))):
-            self.options.append(i**2)
-        if math.ceil(math.sqrt(self.state)) == math.sqrt(self.state):
-            self.options.append(self.state)
+        self.options = options = [i**2 for i in range(1, math.floor(math.sqrt(self.state)) + 1)]
             
             
     def __eq__(self, other):
@@ -84,7 +80,7 @@ class SubtractSquares(Game):
         
         self.state -= self.options[choice] #changes the state
         self.players.reverse() #reverses the player list
-        self.options.remove(self.options[choice]) #removes choice from list of options
+        self.options = [i**2 for i in range(1, math.floor(math.sqrt(self.state)) + 1)] #produces a new list of options
 
 
 if __name__ == '__main__':
