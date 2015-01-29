@@ -4,7 +4,7 @@ import random
 from SubtractSquares import SubtractSquares
 from BasicStrategy import BasicStrategy
 
-a = SubtractSquares(100, ['Player', 'CPU'])
+a = SubtractSquares(random.randint(100, 1000), ['Player', 'CPU'])
 
 def print_title(game):
     """
