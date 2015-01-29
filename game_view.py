@@ -86,6 +86,7 @@ def get_input(game):
     
     """
     player_input = input('{}: Please enter a number between {} and {}, inclusive.\n'.format(game.players[0], 1, len(game.options)))
+    print('Options: {}'.format(game.options))#Test
     int_able = False #Checks if the user input can converted to an integer
     try:
         int(player_input)
@@ -93,14 +94,16 @@ def get_input(game):
     except ValueError:
         int_able = False
     if int_able and (int(player_input) in range(1, len(game.options) + 1)): 
-        print('Job well done.')
+        game.change_state(int(player_input) - 1)
     else:
         print('Sorry, that input didn\'t work.')
         get_input(game)
 
 print_title(a)
 print_instructions(a)
-print_state(a)
-print_turn(a)
-print_options(a)
-get_input(a)
+while a.state > 0:
+    print_state(a)
+    print_turn(a)
+    print_options(a)
+    get_input(a)
+print('Game over.')
