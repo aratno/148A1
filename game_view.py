@@ -14,10 +14,12 @@ def print_title(game):
     +---------------+
     |SubtractSquares|
     +---------------+
+    +---------------+
     """
 
     print('+' + '-'*len(game.title) + '+')
     print('|' + game.title + '|')
+    print('+' + '-'*len(game.title) + '+')
     print('+' + '-'*len(game.title) + '+')
 
 def print_instructions(game):
@@ -58,7 +60,10 @@ def print_state(game):
     The game state is:
     100
     """
-    print('The game state is:\n{}'.format(game.state))
+    message = '  The game state is: {}  '.format(game.state)
+    print('+' + '-'*len(message) + '+')
+    print('|' + message + '|')
+    print('+' + '-'*len(message) + '+')
 
 def print_options(game):
     """
@@ -86,7 +91,6 @@ def get_input(game):
     
     """
     player_input = input('{}: Please enter a number between {} and {}, inclusive.\n'.format(game.players[0], 1, len(game.options)))
-    print('Options: {}'.format(game.options))#Test
     int_able = False #Checks if the user input can converted to an integer
     try:
         int(player_input)
