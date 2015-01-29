@@ -84,6 +84,7 @@ class SubtractSquares(Game):
         
         self.state -= self.options[choice] #changes the state
         self.players.reverse() #reverses the player list
+        self.options.remove(self.options[choice]) #removes choice from list of options
 
 
 if __name__ == '__main__':
