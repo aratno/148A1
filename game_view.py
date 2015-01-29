@@ -116,6 +116,7 @@ class game_view:
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
+    print(' _  _  ____  __     ___  __   _  _  ____ \n/ )( \(  __)(  )   / __)/  \ ( \/ )(  __)\n\ /\ / ) _) / (_/\( (__(  O )/ \/ \ ) _) \n(_/\_)(____)\____/ \___)\__/ \_)(_/(____)')
     a = SubtractSquares(random.randint(100, 1000), ['Player', 'CPU'])
     game_view.print_title(a)
     game_view.print_instructions(a)
@@ -128,5 +129,5 @@ if __name__ == '__main__':
         else:
             time.sleep(3)
             a.change_state(BasicStrategy.default_strategy(a) - 1)
-    print('  ___   __   _  _  ____     __   _  _  ____  ____ ' + '\n / __) / _\ ( \/ )(  __)   /  \ / )( \(  __)(  _ \'' + '\n( (_ \/    \/ \/ \ ) _)   (  O )\ \/ / ) _)  )   /' + '\n \___/\_/\_/\_)(_/(____)   \__/  \__/ (____)(__\_)')
+    print('  ___   __   _  _  ____     __   _  _  ____  ____ \n / __) / _\ ( \/ )(  __)   /  \ / )( \(  __)(  _ \ \n( (_ \/    \/ \/ \ ) _)   (  O )\ \/ / ) _)  )   /\n \___/\_/\_/\_)(_/(____)   \__/  \__/ (____)(__\_)')
     print('{} Wins!'.format(a.players[1]))
