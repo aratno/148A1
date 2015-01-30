@@ -5,9 +5,12 @@ from SubtractSquares import SubtractSquares
 from BasicStrategy import BasicStrategy
 
 class game_view:
-    '''A class for playing an arbitrary two-player, sequential, perfect-information game.
+    '''A class for playing an arbitrary two-player, sequential,
+    perfect-information game.
     
-    This class does not have __init__, __str__, __repr__, or __eq__ methods because it only serves as the user interface for a game and is thus dependent on user input, making such methods unfeasible.
+    This class does not have __init__, __str__, __repr__, or __eq__
+    methods because it only serves as the user interface for a game and is 
+    thus dependent on user input, making such methods unfeasible.
     '''
     def print_title(game):
         """
@@ -38,13 +41,15 @@ class game_view:
         >>> game_view.print_instructions(a)
         <BLANKLINE>
         Subtract Squares is a two-player game. Below are the instructions:
-        1. A positive whole number is picked randomly by the computer (we will call this the target).
-        2. A player picks a perfect square to subtract from the target, and the difference becomes the 
-        new target.
-        3. The next player picks a perfect square to subtract from the target, again producing a new 
-        target.
-        4. Players alternate turns until there are no longer any perfect squares that can be subtracted 
-        from the target. Whomever is to play next when this happens loses.
+        1. A positive whole number is picked randomly by the computer (we 
+        will call this the target).
+        2. A player picks a perfect square to subtract from the target, and 
+        the difference becomes the new target.
+        3. The next player picks a perfect square to subtract from the 
+        target, again producing a new target.
+        4. Players alternate turns until there are no longer any perfect 
+        squares that can be subtracted from the target. Whomever is to play 
+        next when this happens loses.
         <BLANKLINE>
         """
         print('\n' + game.instructions + '\n') 
@@ -82,7 +87,8 @@ class game_view:
         """
         (Game) -> None
     
-        Prints the possible moves for the current game state, with digits right aligned for readability.
+        Prints the possible moves for the current game state, with digits 
+        right aligned for readability.
         
         >>> a = SubtractSquares(100, ['Player 1', 'Player 2'])
         >>> game_view.print_options(a)
@@ -98,20 +104,25 @@ class game_view:
          10. 100
         """
         for i in range(len(game.options)):
-            print('{}{}. {}{}'.format(' '*(1 + len(str(len(game.options))) - len(str(i + 1))), i + 1, ' '*(len(str(max(game.options))) - len(str(game.options[i]))), game.options[i]))
+            print('{}{}. {}{}'.format(' '*(1 + len(str(len(game.options))) \
+            - len(str(i + 1))), i + 1, ' '*(len(str(max(game.options))) - \
+            len(str(game.options[i]))), game.options[i]))
     
     def get_input(game):
         """
         
         """
-        player_input = input('{}: Please enter a number between {} and {}, inclusive.\n'.format(game.players[0], 1, len(game.options)))
-        int_able = False #Checks if the user input can converted to an integer
+        player_input = \
+        input('{}: Please enter a number between {} and {}, inclusive.\n'.\
+        format(game.players[0], 1, len(game.options)))
+        int_able = False #Check if the user input can converted to an int
         try:
             int(player_input)
             int_able = True
         except ValueError:
             int_able = False
-        if int_able and (int(player_input) in range(1, len(game.options) + 1)): 
+        if int_able and (int(player_input) in range(1, len(game.options) \
+        + 1)): 
             game.change_state(int(player_input) - 1)
         else:
             print('Sorry, that input didn\'t work.')
@@ -120,7 +131,10 @@ class game_view:
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
-    print(' _  _  ____  __     ___  __   _  _  ____ \n/ )( \(  __)(  )   / __)/  \ ( \/ )(  __)\n\ /\ / ) _) / (_/\( (__(  O )/ \/ \ ) _) \n(_/\_)(____)\____/ \___)\__/ \_)(_/(____)')
+    print(' _  _  ____  __     ___  __   _  _  ____ ' + '\n' +
+          '/ )( \(  __)(  )   / __)/  \ ( \/ )(  __)' + '\n' +
+          '\ /\ / ) _) / (_/\( (__(  O )/ \/ \ ) _) ' + '\n' +
+          '(_/\_)(____)\____/ \___)\__/ \_)(_/(____)')
     a = SubtractSquares(random.randint(100, 1000), ['Player', 'CPU'])
     game_view.print_title(a)
     game_view.print_instructions(a)
@@ -133,5 +147,8 @@ if __name__ == '__main__':
         else:
             time.sleep(3)
             a.change_state(BasicStrategy.default_strategy(a) - 1)
-    print('  ___   __   _  _  ____     __   _  _  ____  ____ \n / __) / _\ ( \/ )(  __)   /  \ / )( \(  __)(  _ \ \n( (_ \/    \/ \/ \ ) _)   (  O )\ \/ / ) _)  )   /\n \___/\_/\_/\_)(_/(____)   \__/  \__/ (____)(__\_)')
+    print('  ___   __   _  _  ____     __   _  _  ____  ____ ' + '\n' +
+          ' / __) / _\ ( \/ )(  __)   /  \ / )( \(  __)(  _ \ ' + '\n' +
+          '( (_ \/    \/ \/ \ ) _)   (  O )\ \/ / ) _)  )   /' + '\n' +
+          ' \___/\_/\_/\_)(_/(____)   \__/  \__/ (____)(__\_)')
     print('{} Wins!'.format(a.players[1]))

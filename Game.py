@@ -21,7 +21,8 @@ class Game:
         Determine whether two game states are equal.
         """
         
-        raise NotImplementedError('Need a specific game to determine equality.')
+        raise NotImplementedError('Need a specific game to determine \
+        equality.')
     
     def __str__(self):
         """ (Game) -> str
@@ -45,4 +46,5 @@ class Game:
         Take a choice and change the game state to a new one.
         """
         
-        raise NotImplementedError('Need a specific game to change game state.')
+        raise NotImplementedError('Need a specific game to change game \
+        state.')

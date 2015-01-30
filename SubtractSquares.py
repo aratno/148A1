@@ -7,13 +7,15 @@ class SubtractSquares(Game):
     Inherits from the generic Game class.
     
     Subtract Squares is a two-player game. Below are the instructions:
-    1. A positive whole number is picked randomly by the computer (we will call this the target).
-    2. A player picks a perfect square to subtract from the target, and the difference becomes the 
-    new target.
-    3. The next player picks a perfect square to subtract from the target, again producing a new 
-    target.
-    4. Players alternate turns until there are no longer any perfect squares that can be subtracted 
-    from the target. Whomever is to play next when this happens loses.
+    1. A positive whole number is picked randomly by the computer (we 
+    will call this the target).
+    2. A player picks a perfect square to subtract from the target, and 
+    the difference becomes the new target.
+    3. The next player picks a perfect square to subtract from the 
+    target, again producing a new target.
+    4. Players alternate turns until there are no longer any perfect 
+    squares that can be subtracted from the target. Whomever is to play 
+    next when this happens loses.
     
     """  
     
@@ -23,11 +25,20 @@ class SubtractSquares(Game):
         Initialize a subtract squares game state.
         """
         
-        instructions = 'Subtract Squares is a two-player game. Below are the instructions:\n1. A positive whole number is picked randomly by the computer (we will call this the target).\n2. A player picks a perfect square to subtract from the target, and the difference becomes the \nnew target.\n3. The next player picks a perfect square to subtract from the target, again producing a new \ntarget.\n4. Players alternate turns until there are no longer any perfect squares that can be subtracted \nfrom the target. Whomever is to play next when this happens loses.'
+        instructions = 'Subtract Squares is a two-player game. Below are \
+the instructions:\n1. A positive whole number is picked randomly by \
+the computer (we \nwill call this the target).\n2. A player picks a \
+perfect square to subtract from the target, and \nthe difference \
+becomes the new target.\n3. The next player picks a perfect square \
+to subtract from the \ntarget, again producing a new target.\n4. \
+Players alternate turns until there are no longer any \
+perfect \nsquares that can be subtracted from the target. Whomever \
+is to play \nnext when this happens loses.'
         
         Game.__init__(self, players, 'Subtract Squares', instructions)
         self.state = max_choice
-        self.options = options = [i**2 for i in range(1, math.floor(math.sqrt(self.state)) + 1)]
+        self.options = options = [i**2 for i in range(1, math.floor(\
+            math.sqrt(self.state)) + 1)]
             
             
     def __eq__(self, other):
@@ -68,7 +79,8 @@ class SubtractSquares(Game):
         SubtractSquares: max number is 78, next to move is Kasra.
         """
         
-        return 'SubtractSquares: max number is {}, next to move is {}.'.format(self.state, self.players[0])
+        return 'SubtractSquares: max number is {}, next to move is {}.'.\
+               format(self.state, self.players[0])
     
     def change_state(self, choice):
         """ (SubtractSquares, int) -> NoneType
@@ -83,7 +95,9 @@ class SubtractSquares(Game):
         
         self.state -= self.options[choice] #changes the state
         self.players.reverse() #reverses the player list
-        self.options = [i**2 for i in range(1, math.floor(math.sqrt(self.state)) + 1)] #produces a new list of options
+        self.options = [i**2 for i in \
+            range(1, math.floor(math.sqrt(self.state)) + 1)] 
+        #produces a new list of options
 
 
 if __name__ == '__main__':
