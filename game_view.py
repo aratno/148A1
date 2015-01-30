@@ -5,6 +5,10 @@ from SubtractSquares import SubtractSquares
 from BasicStrategy import BasicStrategy
 
 class game_view:
+    '''A class for playing an arbitrary two-player, sequential, perfect-information game.
+    
+    This class does not have __init__, __str__, __repr__, or __eq__ methods because it only serves as the user interface for a game and is thus dependent on user input, making such methods unfeasible.
+    '''
     def print_title(game):
         """
         (Game) -> None
