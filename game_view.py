@@ -13,8 +13,7 @@ class game_view:
     thus dependent on user input, making such methods unfeasible.
     '''
     def print_title(game):
-        """
-        (Game) -> None
+        """(Game) -> None
     
         Prints the title of the game in a box made up of ASCII characters.
         
@@ -32,8 +31,7 @@ class game_view:
         print('+' + '-'*len(game.title) + '+')
     
     def print_instructions(game):
-        """
-        (Game) -> None
+        """(Game) -> None
     
         Prints the instructions of a game in a new line.
         
@@ -52,11 +50,11 @@ class game_view:
         next when this happens loses.
         <BLANKLINE>
         """
+        
         print('\n' + game.instructions + '\n') 
     
     def print_turn(game):
-        """
-        (Game) -> None
+        """(Game) -> None
     
         Prints a notice of the next player to move.
         
@@ -64,11 +62,11 @@ class game_view:
         >>> game_view.print_turn(a)
         ~ Player 1's turn
         """
+        
         print('~ {}\'s turn'.format(game.players[0]))
     
     def print_state(game):
-        """
-        (Game) -> None
+        """(Game) -> None
     
         Prints the state of the game.
         
@@ -78,14 +76,14 @@ class game_view:
         |  The game state is: 100  |
         +--------------------------+
         """
+        
         message = '  The game state is: {}  '.format(game.state)
         print('+' + '-'*len(message) + '+')
         print('|' + message + '|')
         print('+' + '-'*len(message) + '+')
     
     def print_options(game):
-        """
-        (Game) -> None
+        """(Game) -> None
     
         Prints the possible moves for the current game state, with digits 
         right aligned for readability.
@@ -103,20 +101,24 @@ class game_view:
           9.  81
          10. 100
         """
+        
         for i in range(len(game.options)):
             print('{}{}. {}{}'.format(' '*(1 + len(str(len(game.options))) \
             - len(str(i + 1))), i + 1, ' '*(len(str(max(game.options))) - \
             len(str(game.options[i]))), game.options[i]))
     
     def get_input(game):
+        """(Game) -> None
+        
+        Recursively ask for input, ensure that input is legal for the game.
+        If input is legal, change the game state.
         """
         
-        """
         player_input = \
         input('{}: Please enter a number between {} and {}, inclusive.\n'.\
         format(game.players[0], 1, len(game.options)))
-        int_able = False #Check if the user input can converted to an int
-        try:
+        int_able = False 
+        try: #Check if the user input can converted to an int
             int(player_input)
             int_able = True
         except ValueError:

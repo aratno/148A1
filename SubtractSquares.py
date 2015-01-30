@@ -23,6 +23,8 @@ class SubtractSquares(Game):
         """ (SubtractSquares, int, list) -> None
         
         Initialize a subtract squares game state.
+        max_choice is the initial state of the game
+        players is the list of players' names
         """
         
         instructions = 'Subtract Squares is a two-player game. Below are \
