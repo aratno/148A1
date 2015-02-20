@@ -1,31 +1,20 @@
 from Game import Game
-import math
+from math import floor, sqrt
 
 class SubtractSquares(Game):
-    """A class of subtract square game state objects.
+    '''A class of subtract square game state objects.
     
-    Inherits from the generic Game class.
-    
-    Subtract Squares is a two-player game. Below are the instructions:
-    1. A positive whole number is picked randomly by the computer (we 
-    will call this the target).
-    2. A player picks a perfect square to subtract from the target, and 
-    the difference becomes the new target.
-    3. The next player picks a perfect square to subtract from the 
-    target, again producing a new target.
-    4. Players alternate turns until there are no longer any perfect 
-    squares that can be subtracted from the target. Whomever is to play 
-    next when this happens loses.
-    
-    """  
+    Inherits from the generic Game class. Type state.instructions for any 
+    game state to view the instructions.
+    '''  
     
     def __init__(self, max_choice, players):
-        """ (SubtractSquares, int, list) -> None
+        ''' (SubtractSquares, int, list) -> None
         
         Initialize a subtract squares game state.
         max_choice is the initial state of the game
         players is the list of players' names
-        """
+        '''
         
         instructions = 'Subtract Squares is a two-player game. Below are \
 the instructions:\n1. A positive whole number is picked randomly by \
@@ -39,12 +28,9 @@ is to play \nnext when this happens loses.'
         
         Game.__init__(self, players, 'Subtract Squares', instructions)
         self.state = max_choice
-        self.options = options = [i**2 for i in range(1, math.floor(\
-            math.sqrt(self.state)) + 1)]
-            
             
     def __eq__(self, other):
-        """ (SubtractSquares, SubtractSquares) -> Bool
+        ''' (SubtractSquares, SubtractSquares) -> Bool
         
         Determine whether two game states are equal.
         
@@ -55,51 +41,103 @@ is to play \nnext when this happens loses.'
         >>> b = SubtractSquares(78, ['Kasra', 'Soheil'])
         >>> a == b
         True
-        """
+        '''
         
         return self.state == other.state
     
     def __str__(self):
-        """ (SubtractSquares) -> str
+        ''' (SubtractSquares) -> str
         
         Return a string representation of the game state.
         
         >>> a = SubtractSquares(78, ['Kasra', 'Soheil'])
         >>> print(str(a))
         Subtract Square 78, Kasra
-        """
+        '''
         
         return 'Subtract Square {}, {}'.format(self.state, self.players[0])
     
     def __repr__(self):
-        """ (SubtractSquares) -> str
+        ''' (SubtractSquares) -> str
         
         Represent the game state.
         
         >>> a = SubtractSquares(78, ['Kasra', 'Soheil'])
         >>> a
-        SubtractSquares: max number is 78, next to move is Kasra.
-        """
+        SubtractSquares(78, ['Kasra', 'Soheil'])
+        '''
         
-        return 'SubtractSquares: max number is {}, next to move is {}.'.\
-               format(self.state, self.players[0])
+        return 'SubtractSquares({}, {})'.format(self.state, self.players)
     
     def change_state(self, choice):
-        """ (SubtractSquares, int) -> NoneType
+        ''' (SubtractSquares, int) -> NoneType
         
         Take a choice and change the game state to a new one.
         
         >>> a = SubtractSquares(102, ['Kasra', 'Soheil'])
         >>> a.change_state(8)
         >>> a
-        SubtractSquares: max number is 21, next to move is Soheil.
-        """
+        SubtractSquares(21, ['Soheil', 'Kasra'])
+        '''
         
-        self.state -= self.options[choice] #changes the state
+        self.state -= self.available_moves()[choice] #changes the state
         self.players.reverse() #reverses the player list
-        self.options = [i**2 for i in \
-            range(1, math.floor(math.sqrt(self.state)) + 1)] 
-        #produces a new list of options
+        
+    def available_moves(self):
+        '''(SubtractSquares) -> list
+        
+        Return the available moves given the current game state.
+        
+        >>> a = SubtractSquares(78, ['Kasra', 'Soheil'])
+        >>> a.available_moves()
+        [1, 4, 9, 16, 25, 36, 49, 64]
+        '''
+        
+        return [i**2 for i in range(1, int(floor(sqrt(self.state))) + 1)] 
+    
+    def current_player(self):
+        '''(SubtractSquares) -> str
+        
+        Return which player from the list is next to play.
+        
+        >>> a = SubtractSquares(100, ['Kasra', 'Soheil'])
+        >>> a.current_player()
+        'Kasra'
+        '''
+        
+        return self.players[0]
+    
+    def game_over(self):
+        '''(SubtractSquares) -> bool
+        
+        Return whether the game is over.
+        
+        >>> a = SubtractSquares(100, ['Kasra', 'Soheil'])
+        >>> a.game_over()
+        False
+        >>> a.change_state(9)
+        >>> a.game_over()
+        True
+        '''
+        
+        return self.state == 0
+    
+    def winner(self):
+        '''(SubtractSquares) -> str
+        
+        Return which player from the list is the winner.
+        
+        >>> a = SubtractSquares(100, ['Kasra', 'Soheil'])
+        >>> a.winner()
+        >>> a.change_state(9)
+        >>> a.winner()
+        'Kasra'
+        '''
+        
+        if self.game_over():
+            return self.players[1]
+        else:
+            return None
 
 
 if __name__ == '__main__':
