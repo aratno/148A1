@@ -148,7 +148,9 @@ if __name__ == '__main__':
             game_view.get_input(a)
         else:
             sleep(2)
-            a.change_state(BasicStrategy.default_strategy(a) - 1)
+            choice = BasicStrategy.default_strategy(a)
+            print("~ CPU chooses {}".format(choice**2))
+            a.change_state(choice - 1)
     print('  ___   __   _  _  ____     __   _  _  ____  ____ ' + '\n' +
           ' / __) / _\ ( \/ )(  __)   /  \ / )( \(  __)(  _ \ ' + '\n' +
           '( (_ \/    \/ \/ \ ) _)   (  O )\ \/ / ) _)  )   /' + '\n' +
