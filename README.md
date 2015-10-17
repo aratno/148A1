@@ -1,4 +1,4 @@
-CSC148 Assignment 1
+CSC148 Assignment 1  
 This is the first assignment in an introductory computer science class at the University of Toronto.
 
 The task is to code the environment for a game called Subtract Squares, which is played as follows:
